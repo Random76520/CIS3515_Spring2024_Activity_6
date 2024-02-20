@@ -1,5 +1,6 @@
 package edu.temple.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,7 +25,11 @@ class MainActivity : AppCompatActivity() {
 
             // TODO Step 2: Implement lambda body to launch new activity and pass value
             adapter = TextSizeAdapter(textSizes){
+                val launchIntent = Intent(this@MainActivity, DisplayActivity::class.java)
+                val MESSAGE_KEY = "worked"
 
+                launchIntent.putExtra(MESSAGE_KEY, "This shows whether or not it worked!")
+                startActivity(launchIntent)
             }
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
